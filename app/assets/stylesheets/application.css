@@ -1,0 +1,41 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+.container{
+	background: #C3C3E5;
+	padding: 50px;
+}
+
+#title{ 
+	font-family: Arial;
+	font-size: 2em;
+	color: 	#F1F0FF;
+}
+
+.banner{
+	background-color: 	#443266;
+	padding: 25px;
+
+}
+
+.input_stuff{
+	padding: 10px;
+	margin: 5px;
+
+}
+
+.search_list {
+	background: #8C489F;
+	font-family: arial;
+	font-size: 1em;
+	color: #F1F0FF;
+	padding: 5px;
+}
+
+.list{
+	margin: 5px;
+	margin: 15px;
+
+}

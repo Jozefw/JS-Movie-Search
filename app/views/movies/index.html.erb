@@ -1,0 +1,64 @@
+
+<div class="container">
+
+  <div class="search">
+    <div class=banner> 
+      <h2 id="title">The Javascript Movie Search</h2>
+    </div>
+    <input class = "input_stuff" type = "text">
+    <button class="button_submit">Submit</button>
+  </div>
+  <div class="search_list">
+    <ul class="list">
+      <!-- <li></li> -->
+
+    </ul>
+  </div>
+
+    <script type="text/javascript">
+      
+    $(".button_submit").click(function(){
+
+      var search = $(".input_stuff").val();
+        $.ajax({
+          type: "GET",
+          url: "http://www.omdbapi.com",
+          data: {s: search},
+          dataType: "json"
+        })
+
+        // data is what comes back from the website
+          .done(function(data){
+           
+            // so our entire movie search is called movies
+            var movies = data["Search"];
+            
+            $.each(movies, function(index,value){
+                // console.log(value["Year"]);
+                var li = "<li>" + value["Title"] + "</li>";
+                $("ul").append(li);
+
+            });
+
+                $("li").click(function(){
+                  var movie = $(this).html();
+                  
+                $.ajax({
+                      type: "POST",
+                      url: "/movies",
+                      // usually always the create path
+                      data: {movie:{title: movie}},
+                      // title is the key from the controller movie  your making a hash with title equal to the movie
+                      dataType: "json"
+                    }).done(function(data){
+                        console.log(data)
+                    });
+
+                });
+
+          });
+
+    });
+
+    </script>
+ </div> 
